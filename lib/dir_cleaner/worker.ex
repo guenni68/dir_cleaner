@@ -23,7 +23,6 @@ defmodule DirCleaner.Worker do
 
   @impl GenServer
   def handle_info(:ping, %{directory: directory, mode: mode, max_age: max_age} = state) do
-    Logger.debug("cleanup started for #{directory}")
     clean_directory(directory, mode, max_age)
     {:noreply, state}
   end
@@ -35,6 +34,8 @@ defmodule DirCleaner.Worker do
 
     with true <- File.dir?(directory),
          {:ok, filenames} <- File.ls(directory) do
+      Logger.info("cleanup started for #{directory}")
+
       filenames
       |> Enum.map(fn filename -> Path.join([directory, filename]) end)
       |> Enum.flat_map(fn path ->
@@ -47,6 +48,11 @@ defmodule DirCleaner.Worker do
         end
       end)
       |> Enum.each(fn path -> File.rm(path) end)
+
+      Logger.info("cleanup finished for #{directory}")
+    else
+      _ ->
+        Logger.warn("error cleaning #{directory}")
     end
   end
 
