@@ -8,9 +8,8 @@ defmodule DirCleaner.Interval do
   end
 
   defp ping(interval, receiver) do
-    Process.sleep(interval)
-    Logger.debug("Sending ping to #{inspect(receiver)}")
     send(receiver, :ping)
+    Process.sleep(interval)
     ping(interval, receiver)
   end
 end
