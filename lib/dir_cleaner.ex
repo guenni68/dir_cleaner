@@ -3,7 +3,7 @@ defmodule DirCleaner do
   config_directories = Keyword.get(config, :directories, [])
   config_mode = Keyword.get(config, :mode, :touched)
   config_interval = Keyword.get(config, :interval, :timer.minutes(10))
-  config_max_age = Keyword.get(config, :max_age, :timer.minutes(20))
+  config_max_age = Keyword.get(config, :max_age, :timer.minutes(10))
 
   config_child_specs =
     for {dir, index} <- Enum.with_index(config_directories, 1) do
