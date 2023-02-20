@@ -66,7 +66,7 @@ defmodule DirCleaner.Worker do
     end
   end
 
-  defp check_file(path, threshold, %{ctime: time}, :created) do
+  defp check_file(path, threshold, %{ctime: time}, _) do
     ctime = naive_date_time_from_tuple(time)
 
     if NaiveDateTime.compare(ctime, threshold) == :lt do
@@ -74,11 +74,6 @@ defmodule DirCleaner.Worker do
     else
       []
     end
-  end
-
-  defp check_file(_path, _threshold, _stat, _mode) do
-    Logger.warn("configuration error in mode")
-    []
   end
 
   defp naive_date_time_from_tuple({{year, day, month}, {hour, minute, second}}) do
