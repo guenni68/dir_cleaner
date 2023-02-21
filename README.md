@@ -30,7 +30,7 @@ and recompile mix will complain during (re)compilation.
 
 You can overcome the mix compile warning by issuing
 
-```elixir
+```bash
 mix deps.compile dir_cleaner --force
 ```
 

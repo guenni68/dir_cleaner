@@ -9,7 +9,7 @@ defmodule DirCleaner.WorkerSupervisor do
 
   @impl true
   def init(_init_arg) do
-    children = DirCleaner.child_specs()
+    children = DirCleaner.Config.child_specs()
     Supervisor.init(children, strategy: :one_for_one)
   end
 end
