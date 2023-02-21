@@ -1,4 +1,6 @@
 defmodule DirCleaner do
+  @moduledoc false
+
   config = Application.compile_env(:dir_cleaner, __MODULE__, [])
   config_directories = Keyword.get(config, :directories, [])
   config_mode = Keyword.get(config, :mode, :touched)

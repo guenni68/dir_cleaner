@@ -1,6 +1,37 @@
 # DirCleaner
 
-**TODO: Add description**
+**DirCleaner is a simple-to-use utility to automatically remove stale or temporary files from specified directories**
+
+## Usage
+
+in order to use DirCleaner put the following into your config.exs:
+
+```elixir
+config :dir_cleaner, DirCleaner,
+  # set the paths of the directories where you want stale files removed,
+  # defaults to []
+  directories: ["/tmp/dir1", "/tmp/dir2"],
+
+  # optional - sets the interval on how often dir_cleaner looks
+  # for files older than max_age and removes them.
+  # defaults to 10 minutes
+  # value has to be given in milliseconds
+  interval: :timer.minutes(5),
+
+  # set the max age value of the file,
+  # defaults to 10 minutes
+  # value has to be given in milliseconds
+  max_age: :timer.minutes(5)
+```
+
+These values are used at **compile time**. That means that if you change these values
+and recompile mix will complain during (re)compilation.
+
+You can overcome the mix compile warning by issuing
+
+```elixir
+mix deps.compile dir_cleaner --force
+```
 
 ## Installation
 
@@ -14,8 +45,3 @@ def deps do
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/dir_cleaner>.
-
