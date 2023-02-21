@@ -17,8 +17,7 @@ defmodule DirCleaner.MixProject do
       homepage_url: @source_url,
       docs: [
         # The main page in the docs
-        main: "README",
-        extras: ["README.md"]
+        main: "DirCleaner"
       ]
     ]
   end
@@ -47,7 +46,8 @@ defmodule DirCleaner.MixProject do
 
   defp package() do
     [
-      licenses: ["Apache-2.0"]
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 end

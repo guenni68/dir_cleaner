@@ -1,5 +1,6 @@
 # DirCleaner
 
+<!-- README START -->
 **DirCleaner is a simple-to-use utility to automatically remove stale or temporary files from specified directories**
 
 ## Usage
@@ -18,7 +19,7 @@ config :dir_cleaner, DirCleaner,
   # value has to be given in milliseconds
   interval: :timer.minutes(5),
 
-  # set the max age value of the file,
+  # optional - sets the max age value of the files,
   # defaults to 10 minutes
   # value has to be given in milliseconds
   max_age: :timer.minutes(5)

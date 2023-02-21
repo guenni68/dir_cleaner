@@ -1,5 +1,9 @@
 defmodule DirCleaner do
-  @moduledoc false
+  @external_resource readme = Path.expand("./README.md")
+  @moduledoc readme
+             |> File.read!()
+             |> String.split("<!-- README START -->")
+             |> Enum.fetch!(1)
 
   config = Application.compile_env(:dir_cleaner, __MODULE__, [])
   config_directories = Keyword.get(config, :directories, [])
@@ -15,22 +19,27 @@ defmodule DirCleaner do
       )
     end
 
+  @doc false
   def child_specs() do
     unquote(config_child_specs |> Macro.escape())
   end
 
+  @doc false
   def directories() do
     unquote(config_directories)
   end
 
+  @doc false
   def mode() do
     unquote(config_mode)
   end
 
+  @doc false
   def interval() do
     unquote(config_interval)
   end
 
+  @doc false
   def max_age() do
     unquote(config_max_age)
   end
