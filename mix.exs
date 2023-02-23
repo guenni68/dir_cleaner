@@ -17,7 +17,8 @@ defmodule DirCleaner.MixProject do
       homepage_url: @source_url,
       docs: [
         # The main page in the docs
-        main: "DirCleaner"
+        main: "DirCleaner",
+        api_reference: false
       ]
     ]
   end
