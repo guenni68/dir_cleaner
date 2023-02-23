@@ -1,7 +1,7 @@
 defmodule DirCleaner.MixProject do
   use Mix.Project
 
-  @version File.read!("VERSION") |> String.trim()
+  @version "0.1.1"
   @source_url "https://github.com/guenni68/dir_cleaner.git"
 
   def project do
@@ -18,7 +18,8 @@ defmodule DirCleaner.MixProject do
       docs: [
         # The main page in the docs
         main: "DirCleaner",
-        api_reference: false
+        api_reference: false,
+        extras: ["CHANGELOG.md"]
       ]
     ]
   end
